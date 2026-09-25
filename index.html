@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Moiz — Web Developer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2312151B%22/><text x=%2250%22 y=%2268%22 font-family=%22monospace%22 font-size=%2258%22 font-weight=%22700%22 fill=%22%237C8CF8%22 text-anchor=%22middle%22>M</text></svg>">
 <style>
   :root{
     --bg:#12151B;
@@ -82,7 +83,12 @@
 
   .skill{margin-bottom:20px;}
   .skill-top{display:flex; justify-content:space-between; font-size:14px; margin-bottom:8px;}
-  .skill-name{font-weight:600;}
+  .skill-name{font-weight:600; display:flex; align-items:center; gap:10px;}
+  .skill-icon{
+    width:22px; height:22px; border-radius:6px; display:inline-flex;
+    align-items:center; justify-content:center; font-size:11px; font-weight:700;
+    color:#0E1016; flex:none;
+  }
   .skill-pct{color:var(--muted);}
   .bar-track{height:8px; border-radius:4px; background:var(--panel); border:1px solid var(--line); overflow:hidden;}
   .bar-fill{height:100%; border-radius:4px; width:0; transition:width 1s ease;}
@@ -144,29 +150,29 @@
       <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Skills</h2></div>
 
       <div class="skill">
-        <div class="skill-top"><span class="skill-name">HTML</span><span class="skill-pct">95%</span></div>
+        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--html)">H</span>HTML</span><span class="skill-pct">95%</span></div>
         <div class="bar-track"><div class="bar-fill html" data-w="95"></div></div>
       </div>
 
       <div class="skill">
-        <div class="skill-top"><span class="skill-name">CSS</span><span class="skill-pct">80%</span></div>
+        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--css)">C</span>CSS</span><span class="skill-pct">80%</span></div>
         <div class="bar-track"><div class="bar-fill css" data-w="80"></div></div>
       </div>
 
       <div class="skill">
-        <div class="skill-top"><span class="skill-name">JavaScript</span><span class="skill-pct">70%</span></div>
+        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--js)">J</span>JavaScript</span><span class="skill-pct">70%</span></div>
         <div class="bar-track"><div class="bar-fill js" data-w="70"></div></div>
       </div>
 
       <div class="sub-label">Backend</div>
 
       <div class="skill">
-        <div class="skill-top"><span class="skill-name">Node.js</span><span class="skill-pct">65%</span></div>
+        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--node)">N</span>Node.js</span><span class="skill-pct">65%</span></div>
         <div class="bar-track"><div class="bar-fill node" data-w="65"></div></div>
       </div>
 
       <div class="skill">
-        <div class="skill-top"><span class="skill-name">Python</span><span class="skill-pct">60%</span></div>
+        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--py)">P</span>Python</span><span class="skill-pct">60%</span></div>
         <div class="bar-track"><div class="bar-fill py" data-w="60"></div></div>
       </div>
     </section>
