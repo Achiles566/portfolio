@@ -1,225 +1,1348 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1, viewport-fit=cover">
+
 <title>Moiz — Web Developer</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2312151B%22/><text x=%2250%22 y=%2268%22 font-family=%22monospace%22 font-size=%2258%22 font-weight=%22700%22 fill=%22%237C8CF8%22 text-anchor=%22middle%22>M</text></svg>">
+
+<link
+rel="icon"
+href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%2312151B%22/><text x=%2250%22 y=%2268%22 font-family=%22monospace%22 font-size=%2258%22 font-weight=%22700%22 fill=%22%237C8CF8%22 text-anchor=%22middle%22>M</text></svg>"
+>
+
 <style>
-  :root{
+
+:root{
     --bg:#12151B;
     --bg2:#181C24;
     --panel:#1E232C;
     --text:#E9ECF1;
     --muted:#8B93A3;
     --line:#2A303B;
+
     --accent:#7C8CF8;
     --accent2:#E8B854;
+
     --html:#E8B854;
     --css:#7C8CF8;
     --js:#5FBFA0;
     --node:#7FBF6A;
     --py:#E8B854;
     --sql:#7C8CF8;
-    padding-top: env(safe-area-inset-top,0px);
-    padding-bottom: env(safe-area-inset-bottom,0px);
+
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+
     box-sizing:border-box;
-  }
-  @media (prefers-color-scheme: light){
+}
+
+@media (prefers-color-scheme:light){
+
     :root:not([data-theme="dark"]){
-      --bg:#F7F6F2; --bg2:#FFFFFF; --panel:#FFFFFF; --text:#1B1E24;
-      --muted:#6B7280; --line:#E4E1D8;
+
+        --bg:#F7F6F2;
+        --bg2:#FFFFFF;
+        --panel:#FFFFFF;
+        --text:#1B1E24;
+        --muted:#6B7280;
+        --line:#E4E1D8;
+
     }
-  }
-  *{box-sizing:border-box;}
-  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
-  html,body{background:var(--bg);}
-  body{
-    margin:0; color:var(--text); background:var(--bg);
-    font-family:'Fira Code','SF Mono',Consolas,monospace;
+
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-padding-top:
+    env(safe-area-inset-top,0px);
+
+    scroll-behavior:smooth;
+}
+
+html,
+body{
+
+    background:var(--bg);
+}
+
+body{
+
+    margin:0;
+
+    color:var(--text);
+
+    background:var(--bg);
+
+    font-family:
+    'Fira Code',
+    'SF Mono',
+    Consolas,
+    monospace;
+
     line-height:1.6;
-  }
-  a{color:inherit;}
-  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+}
 
-  header.nav{
-    position:sticky; top:0; top:env(safe-area-inset-top,0px);
-    background:color-mix(in srgb, var(--bg) 88%, transparent);
+a{
+    color:inherit;
+}
+
+.wrap{
+
+    max-width:760px;
+
+    margin:0 auto;
+
+    padding:0 24px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+header.nav{
+
+    position:sticky;
+
+    top:0;
+
+    top:env(safe-area-inset-top,0px);
+
+    background:
+    color-mix(
+        in srgb,
+        var(--bg) 88%,
+        transparent
+    );
+
     backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
+
+    border-bottom:
+    1px solid var(--line);
+
     z-index:10;
-  }
-  header.nav .wrap{display:flex; align-items:center; justify-content:space-between; height:56px; max-width:760px;}
-  .logo{font-weight:600; letter-spacing:0.02em; font-size:15px;}
-  .logo .dot{color:var(--accent2);}
-  nav.links{display:flex; gap:22px; font-size:13px; color:var(--muted);}
-  nav.links a{text-decoration:none;}
-  nav.links a:hover{color:var(--text);}
+}
 
-  main{padding-bottom:80px;}
+header.nav .wrap{
 
-  section.hero{padding:64px 0 40px;}
-  .prompt{color:var(--muted); font-size:14px; margin-bottom:10px;}
-  .prompt .path{color:var(--js);}
-  h1{
-    font-size:clamp(32px,7vw,52px); margin:0 0 12px; line-height:1.08;
-    font-weight:600; letter-spacing:-0.01em;
-  }
-  h1 .name{color:var(--accent);}
-  .role{font-size:17px; color:var(--muted); margin:0 0 26px; max-width:520px;}
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px; padding:11px 18px;
-    border-radius:6px; font-size:14px; text-decoration:none; border:1px solid var(--line);
-  }
-  .btn.primary{background:var(--accent); color:#0E1016; border-color:var(--accent); font-weight:600;}
-  .btn.ghost{color:var(--text);}
-  .btn:hover{opacity:0.88;}
+    display:flex;
 
-  section{padding:36px 0; border-top:1px solid var(--line);}
-  .sec-head{display:flex; align-items:baseline; gap:10px; margin-bottom:22px;}
-  .sec-num{color:var(--muted); font-size:13px;}
-  .sec-title{font-size:20px; font-weight:600; margin:0;}
+    align-items:center;
 
-  .skill{margin-bottom:20px;}
-  .skill-top{display:flex; justify-content:space-between; font-size:14px; margin-bottom:8px;}
-  .skill-name{font-weight:600; display:flex; align-items:center; gap:10px;}
-  .skill-icon{
-    width:22px; height:22px; border-radius:6px; display:inline-flex;
-    align-items:center; justify-content:center; font-size:11px; font-weight:700;
-    color:#0E1016; flex:none;
-  }
-  .skill-pct{color:var(--muted);}
-  .bar-track{height:8px; border-radius:4px; background:var(--panel); border:1px solid var(--line); overflow:hidden;}
-  .bar-fill{height:100%; border-radius:4px; width:0; transition:width 1s ease;}
-  .bar-fill.html{background:var(--html);}
-  .bar-fill.css{background:var(--css);}
-  .bar-fill.js{background:var(--js);}
-  .bar-fill.node{background:var(--node);}
-  .bar-fill.py{background:var(--py);}
-  .bar-fill.sql{background:var(--sql);}
-  .sub-label{font-size:13px; color:var(--muted); margin:26px 0 14px; padding-top:14px; border-top:1px dashed var(--line);}
+    justify-content:space-between;
 
-  .projects{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-  @media (max-width:560px){.projects{grid-template-columns:1fr;}}
-  .card{
-    background:var(--panel); border:1px solid var(--line); border-radius:10px;
-    padding:20px; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:var(--text);
-    transition:border-color .2s ease, transform .2s ease;
-  }
-  .card:hover{border-color:var(--accent); transform:translateY(-2px);}
-  .card-title{font-size:16px; font-weight:600; display:flex; justify-content:space-between; align-items:center;}
-  .card-title .arrow{color:var(--accent2); font-family:sans-serif;}
-  .card-desc{font-size:13.5px; color:var(--muted); line-height:1.55;}
-  .card-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:auto;}
-  .tag{font-size:11px; color:var(--muted); border:1px solid var(--line); padding:3px 8px; border-radius:20px;}
+    height:56px;
 
-  .contact-row{display:flex; gap:16px; flex-wrap:wrap; font-size:14px;}
-  .contact-row a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;}
-  .contact-row a:hover{border-color:var(--accent);}
+    max-width:760px;
+}
 
-  footer{padding:28px 0 40px; color:var(--muted); font-size:12.5px; border-top:1px solid var(--line);}
+.logo{
+
+    font-weight:600;
+
+    letter-spacing:0.02em;
+
+    font-size:15px;
+}
+
+.logo .dot{
+
+    color:var(--accent2);
+}
+
+nav.links{
+
+    display:flex;
+
+    gap:22px;
+
+    font-size:13px;
+
+    color:var(--muted);
+}
+
+nav.links a{
+
+    text-decoration:none;
+}
+
+nav.links a:hover{
+
+    color:var(--text);
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+
+    padding-bottom:80px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+section.hero{
+
+    padding:64px 0 40px;
+}
+
+.prompt{
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    margin-bottom:10px;
+}
+
+.prompt .path{
+
+    color:var(--js);
+}
+
+h1{
+
+    font-size:
+    clamp(32px,7vw,52px);
+
+    margin:
+    0 0 12px;
+
+    line-height:1.08;
+
+    font-weight:600;
+
+    letter-spacing:-0.01em;
+}
+
+h1 .name{
+
+    color:var(--accent);
+}
+
+.role{
+
+    font-size:17px;
+
+    color:var(--muted);
+
+    margin:
+    0 0 26px;
+
+    max-width:520px;
+}
+
+.cta-row{
+
+    display:flex;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+}
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:11px 18px;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+    text-decoration:none;
+
+    border:
+    1px solid var(--line);
+
+    transition:0.2s;
+}
+
+.btn.primary{
+
+    background:var(--accent);
+
+    color:#0E1016;
+
+    border-color:var(--accent);
+
+    font-weight:600;
+}
+
+.btn.ghost{
+
+    color:var(--text);
+}
+
+.btn:hover{
+
+    opacity:0.88;
+
+    transform:translateY(-1px);
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+
+    padding:36px 0;
+
+    border-top:
+    1px solid var(--line);
+}
+
+.sec-head{
+
+    display:flex;
+
+    align-items:baseline;
+
+    gap:10px;
+
+    margin-bottom:22px;
+}
+
+.sec-num{
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+.sec-title{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    margin:0;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.skill{
+
+    margin-bottom:20px;
+}
+
+.skill-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:14px;
+
+    margin-bottom:8px;
+}
+
+.skill-name{
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.skill-icon{
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:6px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    color:#0E1016;
+
+    flex:none;
+}
+
+.skill-pct{
+
+    color:var(--muted);
+}
+
+.bar-track{
+
+    height:8px;
+
+    border-radius:4px;
+
+    background:var(--panel);
+
+    border:
+    1px solid var(--line);
+
+    overflow:hidden;
+}
+
+.bar-fill{
+
+    height:100%;
+
+    border-radius:4px;
+
+    width:0;
+
+    transition:
+    width 1s ease;
+}
+
+.bar-fill.html{
+
+    background:var(--html);
+}
+
+.bar-fill.css{
+
+    background:var(--css);
+}
+
+.bar-fill.js{
+
+    background:var(--js);
+}
+
+.bar-fill.node{
+
+    background:var(--node);
+}
+
+.bar-fill.py{
+
+    background:var(--py);
+}
+
+.bar-fill.sql{
+
+    background:var(--sql);
+}
+
+.sub-label{
+
+    font-size:13px;
+
+    color:var(--muted);
+
+    margin:
+    26px 0 14px;
+
+    padding-top:14px;
+
+    border-top:
+    1px dashed var(--line);
+}
+
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:18px;
+}
+
+.card{
+
+    background:var(--panel);
+
+    border:
+    1px solid var(--line);
+
+    border-radius:10px;
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    transition:
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.card:hover{
+
+    border-color:var(--accent);
+
+    transform:
+    translateY(-2px);
+}
+
+.card-title{
+
+    font-size:16px;
+
+    font-weight:600;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.card-title .arrow{
+
+    color:var(--accent2);
+
+    font-family:sans-serif;
+}
+
+.card-desc{
+
+    font-size:13.5px;
+
+    color:var(--muted);
+
+    line-height:1.55;
+}
+
+.card-tags{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-top:auto;
+}
+
+.tag{
+
+    font-size:11px;
+
+    color:var(--muted);
+
+    border:
+    1px solid var(--line);
+
+    padding:3px 8px;
+
+    border-radius:20px;
+}
+
+
+/* =========================
+   THIRD PROJECT SPECIAL
+========================= */
+
+.card.featured{
+
+    border-color:
+    rgba(233,162,59,0.35);
+}
+
+.card.featured:hover{
+
+    border-color:#E8B854;
+}
+
+.project-number{
+
+    font-size:11px;
+
+    color:var(--muted);
+
+    margin-bottom:2px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.project-live{
+
+    color:#5FBFA0;
+
+    font-size:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+}
+
+.project-live::before{
+
+    content:"";
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#5FBFA0;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-row{
+
+    display:flex;
+
+    gap:16px;
+
+    flex-wrap:wrap;
+
+    font-size:14px;
+}
+
+.contact-row a{
+
+    text-decoration:none;
+
+    border-bottom:
+    1px solid var(--line);
+
+    padding-bottom:2px;
+}
+
+.contact-row a:hover{
+
+    border-color:var(--accent);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    padding:
+    28px 0 40px;
+
+    color:var(--muted);
+
+    font-size:12.5px;
+
+    border-top:
+    1px solid var(--line);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:560px){
+
+    .projects{
+
+        grid-template-columns:1fr;
+    }
+
+    nav.links{
+
+        gap:12px;
+
+        font-size:12px;
+    }
+
+    .wrap{
+
+        padding:
+        0 18px;
+    }
+
+}
+
 </style>
+
 </head>
+
+
 <body>
 
+
+<!-- =========================
+     NAV
+========================= -->
+
 <header class="nav">
-  <div class="wrap">
-    <div class="logo">moiz<span class="dot">.</span>dev</div>
-    <nav class="links">
-      <a href="#skills">skills</a>
-      <a href="#projects">projects</a>
-      <a href="#contact">contact</a>
-    </nav>
-  </div>
+
+<div class="wrap">
+
+<div class="logo">
+
+moiz<span class="dot">.</span>dev
+
+</div>
+
+
+<nav class="links">
+
+<a href="#skills">
+skills
+</a>
+
+<a href="#projects">
+projects
+</a>
+
+<a href="#contact">
+contact
+</a>
+
+</nav>
+
+</div>
+
 </header>
 
+
+
 <main>
-  <div class="wrap">
-    <section class="hero">
-      <div class="prompt"><span class="path">~/moiz</span> $ whoami</div>
-      <h1>Hi, I'm <span class="name">Moiz</span>.</h1>
-      <p class="role">A full-stack web developer — building clean, functional interfaces with HTML, CSS and JavaScript, backed by server-side logic and databases.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="#projects">View projects</a>
-        <a class="btn ghost" href="#contact">Get in touch</a>
-      </div>
-    </section>
 
-    <section id="skills">
-      <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Skills</h2></div>
+<div class="wrap">
 
-      <div class="skill">
-        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--html)">H</span>HTML</span><span class="skill-pct">95%</span></div>
-        <div class="bar-track"><div class="bar-fill html" data-w="95"></div></div>
-      </div>
 
-      <div class="skill">
-        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--css)">C</span>CSS</span><span class="skill-pct">80%</span></div>
-        <div class="bar-track"><div class="bar-fill css" data-w="80"></div></div>
-      </div>
+<!-- =========================
+     HERO
+========================= -->
 
-      <div class="skill">
-        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--js)">J</span>JavaScript</span><span class="skill-pct">70%</span></div>
-        <div class="bar-track"><div class="bar-fill js" data-w="70"></div></div>
-      </div>
+<section class="hero">
 
-      <div class="sub-label">Backend</div>
+<div class="prompt">
 
-      <div class="skill">
-        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--node)">N</span>Node.js</span><span class="skill-pct">65%</span></div>
-        <div class="bar-track"><div class="bar-fill node" data-w="65"></div></div>
-      </div>
+<span class="path">
+~/moiz
+</span>
 
-      <div class="skill">
-        <div class="skill-top"><span class="skill-name"><span class="skill-icon" style="background:var(--py)">P</span>Python</span><span class="skill-pct">60%</span></div>
-        <div class="bar-track"><div class="bar-fill py" data-w="60"></div></div>
-      </div>
-    </section>
+$ whoami
 
-    <section id="projects">
-      <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Projects</h2></div>
-      <div class="projects">
-        <a class="card" href="https://achiles566.github.io/Block/" target="_blank" rel="noopener">
-          <div class="card-title">Block <span class="arrow">↗</span></div>
-          <div class="card-desc">A browser-based project built with HTML, CSS and JavaScript. Live demo hosted on GitHub Pages.</div>
-          <div class="card-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
-        </a>
-        <a class="card" href="https://achiles566.github.io/AnimeGo/" target="_blank" rel="noopener">
-          <div class="card-title">AnimeGo <span class="arrow">↗</span></div>
-          <div class="card-desc">A front-end web app exploring layout and interactivity with vanilla JavaScript. Live demo hosted on GitHub Pages.</div>
-          <div class="card-tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
-        </a>
-      </div>
-    </section>
+</div>
 
-    <section id="contact">
-      <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Contact</h2></div>
-      <div class="prompt" style="margin-bottom:14px;">socalmediaservice@gmail.com</div>
-      <div class="contact-row">
-        <a href="https://github.com/achiles566" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.instagram.com/moiz_xrabi/?hl=en" target="_blank" rel="noopener">Instagram</a>
-      </div>
-    </section>
-  </div>
+
+<h1>
+
+Hi, I'm
+<span class="name">
+Moiz
+</span>.
+
+</h1>
+
+
+<p class="role">
+
+A full-stack web developer —
+building clean, functional interfaces
+with HTML, CSS and JavaScript,
+backed by server-side logic and databases.
+
+</p>
+
+
+<div class="cta-row">
+
+<a
+class="btn primary"
+href="#projects"
+>
+View projects
+</a>
+
+
+<a
+class="btn ghost"
+href="#contact"
+>
+Get in touch
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
+
+<div class="sec-head">
+
+<span class="sec-num">
+01
+</span>
+
+<h2 class="sec-title">
+Skills
+</h2>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<span class="skill-name">
+
+<span
+class="skill-icon"
+style="background:var(--html)"
+>
+H
+</span>
+
+HTML
+
+</span>
+
+<span class="skill-pct">
+95%
+</span>
+
+</div>
+
+
+<div class="bar-track">
+
+<div
+class="bar-fill html"
+data-w="95"
+></div>
+
+</div>
+
+</div>
+
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<span class="skill-name">
+
+<span
+class="skill-icon"
+style="background:var(--css)"
+>
+C
+</span>
+
+CSS
+
+</span>
+
+<span class="skill-pct">
+80%
+</span>
+
+</div>
+
+
+<div class="bar-track">
+
+<div
+class="bar-fill css"
+data-w="80"
+></div>
+
+</div>
+
+</div>
+
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<span class="skill-name">
+
+<span
+class="skill-icon"
+style="background:var(--js)"
+>
+J
+</span>
+
+JavaScript
+
+</span>
+
+<span class="skill-pct">
+70%
+</span>
+
+</div>
+
+
+<div class="bar-track">
+
+<div
+class="bar-fill js"
+data-w="70"
+></div>
+
+</div>
+
+</div>
+
+
+
+<div class="sub-label">
+Backend
+</div>
+
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<span class="skill-name">
+
+<span
+class="skill-icon"
+style="background:var(--node)"
+>
+N
+</span>
+
+Node.js
+
+</span>
+
+<span class="skill-pct">
+65%
+</span>
+
+</div>
+
+
+<div class="bar-track">
+
+<div
+class="bar-fill node"
+data-w="65"
+></div>
+
+</div>
+
+</div>
+
+
+
+<div class="skill">
+
+<div class="skill-top">
+
+<span class="skill-name">
+
+<span
+class="skill-icon"
+style="background:var(--py)"
+>
+P
+</span>
+
+Python
+
+</span>
+
+<span class="skill-pct">
+60%
+</span>
+
+</div>
+
+
+<div class="bar-track">
+
+<div
+class="bar-fill py"
+data-w="60"
+></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects">
+
+<div class="sec-head">
+
+<span class="sec-num">
+02
+</span>
+
+<h2 class="sec-title">
+Projects
+</h2>
+
+</div>
+
+
+<div class="projects">
+
+
+<!-- PROJECT 1 -->
+
+<a
+class="card"
+href="https://achiles566.github.io/Block/"
+target="_blank"
+rel="noopener"
+>
+
+<div class="project-number">
+Project 01
+</div>
+
+<div class="card-title">
+
+Block
+
+<span class="arrow">
+↗
+</span>
+
+</div>
+
+
+<div class="card-desc">
+
+A browser-based project built with
+HTML, CSS and JavaScript.
+Live demo hosted on GitHub Pages.
+
+</div>
+
+
+<div class="card-tags">
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JS
+</span>
+
+</div>
+
+</a>
+
+
+
+<!-- PROJECT 2 -->
+
+<a
+class="card"
+href="https://achiles566.github.io/AnimeGo/"
+target="_blank"
+rel="noopener"
+>
+
+<div class="project-number">
+Project 02
+</div>
+
+<div class="card-title">
+
+AnimeGo
+
+<span class="arrow">
+↗
+</span>
+
+</div>
+
+
+<div class="card-desc">
+
+A front-end web app exploring layout
+and interactivity with vanilla JavaScript.
+Live demo hosted on GitHub Pages.
+
+</div>
+
+
+<div class="card-tags">
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JS
+</span>
+
+</div>
+
+</a>
+
+
+
+<!-- PROJECT 3 -->
+
+<a
+class="card featured"
+href="https://achiles566.github.io/EMBER_CAFE/"
+target="_blank"
+rel="noopener"
+>
+
+<div class="project-number">
+Project 03
+</div>
+
+
+<div class="card-title">
+
+Ember Café
+
+<span class="arrow">
+↗
+</span>
+
+</div>
+
+
+<div class="project-live">
+Live on GitHub Pages
+</div>
+
+
+<div class="card-desc">
+
+A modern café business website designed
+with a premium responsive layout,
+menu sections, gallery, customer reviews,
+contact area and WhatsApp integration.
+
+</div>
+
+
+<div class="card-tags">
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JavaScript
+</span>
+
+<span class="tag">
+Responsive
+</span>
+
+</div>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+<div class="sec-head">
+
+<span class="sec-num">
+03
+</span>
+
+<h2 class="sec-title">
+Contact
+</h2>
+
+</div>
+
+
+<div
+class="prompt"
+style="margin-bottom:14px;"
+>
+
+socalmediaservice@gmail.com
+
+</div>
+
+
+<div class="contact-row">
+
+<a
+href="https://github.com/achiles566"
+target="_blank"
+rel="noopener"
+>
+GitHub
+</a>
+
+
+<a
+href="https://www.instagram.com/moiz_xrabi/?hl=en"
+target="_blank"
+rel="noopener"
+>
+Instagram
+</a>
+
+</div>
+
+</section>
+
+
+</div>
+
 </main>
 
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
-  <div class="wrap">© 2026 Moiz. Built with HTML, CSS &amp; JS.</div>
+
+<div class="wrap">
+
+© 2026 Moiz.
+Built with HTML, CSS &amp; JS.
+
+</div>
+
 </footer>
 
+
+
 <script>
-  const bars = document.querySelectorAll('.bar-fill');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.style.width = e.target.dataset.w + '%';
-        io.unobserve(e.target);
-      }
-    });
-  }, {threshold:0.4});
-  bars.forEach(b=>io.observe(b));
+
+/* =========================
+   SKILL BAR ANIMATION
+========================= */
+
+const bars =
+document.querySelectorAll('.bar-fill');
+
+
+const io =
+new IntersectionObserver(
+(entries) => {
+
+entries.forEach(
+entry => {
+
+if(entry.isIntersecting){
+
+entry.target.style.width =
+entry.target.dataset.w + '%';
+
+io.unobserve(entry.target);
+
+}
+
+});
+
+},
+{
+threshold:0.4
+});
+
+
+bars.forEach(
+bar => io.observe(bar)
+);
+
 </script>
 
+
 </body>
+
 </html>
+
